@@ -62,6 +62,8 @@
 				<c:choose>
 					<c:when test="${id != null}">
 						<li id="greet"><a href="member/info.jsp">${id }</a>님 반갑습니다.</li>
+						<br />
+						<button type="button" id="logout">로그아웃</button>
 					</c:when>
 				</c:choose>
 			</ul>
@@ -93,6 +95,12 @@
 	});
 	boardList.addEventListener("click", () => {
 		location.href = "board/list.jsp";
+	});
+	document.getElementById("logout").addEventListener("click", () => {
+		const isLogout = confirm("로그아웃 하시겠습니까?");
+		if(isLogout){
+			location.href = "member/logout.jsp";
+		};
 	});
 </script>
 </body>
