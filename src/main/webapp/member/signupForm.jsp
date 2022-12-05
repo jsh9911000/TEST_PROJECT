@@ -29,9 +29,6 @@
 		justify-content:center;
 		align-items:center;
 	}
-	.container {
-		
-	}
 </style>
 </head>
 <body>

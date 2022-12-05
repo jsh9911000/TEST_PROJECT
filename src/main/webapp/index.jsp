@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String id = (String)session.getAttribute("id");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +19,14 @@
 	#title {
 		color:white;
 		text-align:center;
+	}
+	.memberInfo {
+		text-align:center;
+	}
+	#greet {
+		color:white;
+		font-weight:bold;
+		list-style-type:none;
 	}
 	.container {
 		width:600px;
@@ -45,11 +57,26 @@
 		</div>
 	</header>
 	<main>
+		<div class="memberInfo">
+			<ul>
+				<c:choose>
+					<c:when test="${id != null}">
+						<li id="greet"><a href="member/info.jsp">${id }</a>님 반갑습니다.</li>
+					</c:when>
+				</c:choose>
+			</ul>
+		</div>
 		<div class="container">
 			<div class="root_box">
 				<dl>
 					<dt>회원가입</dt>
 					<dd><button type=button id="signup">이동</button></dd>
+					<dt>로그인</dt>
+					<dd><button type="button" id="login">이동</button></dd>
+					<dt>전체회원 목록</dt>
+					<dd><button type="button" id="selectAll">이동</button></dd>
+					<dt>게시판</dt>
+					<dd><button type="button" id="boardList">이동</button></dd>
 				</dl>	
 			</div>
 		</div>
@@ -57,6 +84,15 @@
 <script>
 	signup.addEventListener("click", () => {
 		location.href = "member/signupForm.jsp";
+	});
+	login.addEventListener("click", () => {
+		location.href = "member/loginForm.jsp";
+	});
+	selectAll.addEventListener("click", () => {
+		location.href = "member/list.jsp";
+	});
+	boardList.addEventListener("click", () => {
+		location.href = "board/list.jsp";
 	});
 </script>
 </body>
