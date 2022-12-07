@@ -81,7 +81,7 @@
 		location.href = "updateForm.jsp";
 	});
 	deleteMember.addEventListener("click", () => {
-		const isDelete = confirm("탈퇴하시겠습니까?");
+		const isDelete = confirm(`${id}님 탈퇴하시겠습니까?`);	//id 값을 가져오는 것을 통해서 JS와 Java가 연결되어 있다는 것을 알 수 있다.
 		if(isDelete){
 			location.href = "delete.jsp";
 		};

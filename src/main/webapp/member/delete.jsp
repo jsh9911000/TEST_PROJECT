@@ -20,7 +20,7 @@
 <body>
 
 <script>
-	alert("탈퇴 되었습니다.");
+	alert(`${id}님 탈퇴되었습니다.`);
 	location.href = "../index.jsp";
 </script>
 </body>
