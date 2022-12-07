@@ -20,7 +20,7 @@ public class MemberService {
 	public boolean login(String id, String pwd) {
 		return dao.selectOne(id, pwd);
 	};
-	//회원 조회 메소드.
+	//회원 조회 메소드(1).
 	public MemberDto select(String id) {
 		return dao.selectMember(id);
 	};
@@ -35,5 +35,10 @@ public class MemberService {
 	//회원 전체 목록 메소드.
 	public List<MemberDto> selectAll(){
 		return dao.selectMembers();
-	}
+	};
+	//회원 조회 메소드(2).
+	public boolean isExist(String id) {
+		return dao.isExistMember(id);
+	};
+	
 }

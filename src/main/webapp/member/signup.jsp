@@ -18,7 +18,10 @@
 	MemberDao dao = new MemberDao();
 	MemberService ms = new MemberService(dao);
 	
-	ms.signup(dto);
+	boolean isExist = ms.isExist(id);
+	if(isExist){
+		
+	}
 %>
 <!DOCTYPE html>
 <html>

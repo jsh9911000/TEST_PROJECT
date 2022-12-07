@@ -76,5 +76,4 @@ public class BoardDao {
 		return list;
 	};
 	//게시글 삭제 메소드.
-	pu
 }

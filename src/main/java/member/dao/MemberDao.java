@@ -71,7 +71,7 @@ public class MemberDao {
 			return false;
 		}
 	};
-	//회원 조회 메소드.
+	//회원 조회 메소드(1).
 	public MemberDto selectMember(String id) {
 		MemberDto dto = null;
 		Connection conn = null;
@@ -194,5 +194,39 @@ public class MemberDao {
 			}
 		}
 		return list;
+	};
+	//회원 조회 메소드(2). => 진작에 SQL에서 제한을 unique를 줬다면 중복 아이디 안되게 만들었을 것이다.
+	public boolean isExistMember(String id) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int flag = 0;
+		try {
+			conn = new DBConnect().getConn();
+			String sql = "select num"
+					+ " from member"
+					+ " where userID = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			if(rs != null) {
+				flag = 1;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null) conn.close();
+				if(ps != null) ps.close();
+				if(rs != null) rs.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if(flag > 0) {
+			return true;
+		}else {
+			return false;
+		}
 	};
 }
